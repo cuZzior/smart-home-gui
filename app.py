@@ -28,8 +28,10 @@ def groceries_add():
             'name': request.form['name'],
             'exp_date': request.form['exp_date']
         })
-        print(_request.text)
-        return redirect(url_for('groceries'))
+        print(_request.status_code)
+        if _request.status_code == 200:
+            return redirect(url_for('groceries'))
+        return render_template('groceries/manage.html', response=json.loads(_request.text)['response'])
 
 
 @app.route('/groceries/delete/<int:db_id>')
@@ -52,7 +54,6 @@ def groceries_update(db_id):
             'name': request.form['name'],
             'exp_date': request.form['exp_date']
         })
-        print(_request)
         return redirect(url_for('groceries'))
 
 
