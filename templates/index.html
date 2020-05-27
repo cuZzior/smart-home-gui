@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="card index-card">
+                <img src="{{ url_for('static', filename="groceries.jpg") }}" class="card-img-top" height="193">
+                <div class="card-body">
+                    <h5 class="card-title">Manage groceries</h5>
+                    <p class="card-text">Quickly add, update or delete grocery or display all available groceries.</p>
+                    <a href="{{ url_for('groceries') }}" class="btn btn-primary">Manage</a>
+                </div>
+            </div>
+            <div class="card index-card">
+                <img src="{{ url_for('static', filename="cameras.jpg") }}" class="card-img-top" height="193">
+                <div class="card-body">
+                    <h5 class="card-title">Cameras</h5>
+                    <p class="card-text">Take a look what's going on at your place.</p>
+                    <a href="#" class="btn btn-primary">Surveillance</a>
+                </div>
+            </div>
+            <div class="card index-card">
+                <img src="{{ url_for('static', filename="tesla.jpg") }}" class="card-img-top" height="193">
+                <div class="card-body">
+                    <h5 class="card-title">Manage vehicle</h5>
+                    <p class="card-text">Check details of your vehicle.<br /><br /></p>
+                    <a href="#" class="btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

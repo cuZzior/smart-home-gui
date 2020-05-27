@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}All Groceries{% endblock %}
+{% block content %}
+    <div class="container groceries-list">
+        <div class="row">
+            <div class="col">
+                <h3>Current groceries in your home:</h3>
+            </div>
+            <div class="col col-sm-auto">
+                <a href="{{ url_for('groceries_add') }}"><button type="button" class="btn btn-outline-info">Add new item</button></a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Expiration Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for grocery in groceries %}
+                <tr>
+                    <td>
+                        {{ grocery['name'] }}
+                    </td>
+                    <td>{{ grocery['exp_date'] }}
+                        <span style="float: right">
+                            <a href="{{ url_for('groceries_update', db_id=grocery['id']) }}"><span style="color: green"><i class="far fa-edit"></i></span></a>
+                            <a href="{{ url_for('groceries_delete', db_id=grocery['id']) }}"><span style="color: red"><i class="far fa-trash-alt"></i></span></a>
+                        </span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
